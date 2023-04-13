@@ -1,0 +1,18 @@
+.inner-nav{
+  display: flex;
+  flex-direction: column;
+}
+.top-nav{
+  justify-content: space-evenly;
+  height: 50vh;
+}
+.bottom-nav{
+  justify-content: space-evenly;
+  height: 20vh;
+}
+
+.left-nav{
+  display:flex;
+  flex-direction: column;
+
+}
