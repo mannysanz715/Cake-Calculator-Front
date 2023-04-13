@@ -9,7 +9,8 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Home from './pages/Home/Home'
-
+import RecipesLanding from './pages/RecipesIngredients/RecipesLanding'
+import LeftDashboard from './components/LeftDashboard/LeftDashboard'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -19,6 +20,7 @@ import * as authService from './services/authService'
 
 // styles
 import './App.css'
+import './components/LeftDashboard/LeftDashboard.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -35,18 +37,28 @@ const App = () => {
   }
 
   return (
-    <>
-      <NavBar user={user} handleLogout={handleLogout} />
+    <div className='home-container'>
+      {user ? <LeftDashboard user={user} handleLogout={handleLogout}/>
+      : <NavBar user={user} handleLogout={handleLogout} />
+      }
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route
-          path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
+        {user ? <Route path='/' element={
+            <ProtectedRoute user={user}>
+              <Home user={user} />
+            </ProtectedRoute>
+          } /> : 
+          <>
+          <Route path="/" element={<Landing user={user} />} />
+          <Route
+            path="/signup"
+            element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+          <Route
           path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-        />
+            element={<Login user={user} handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+        </>
+      }
         <Route
           path="/profiles"
           element={
@@ -64,15 +76,22 @@ const App = () => {
           }
         />
         <Route 
-          path="/home"
+          path='/recipies'
           element={
             <ProtectedRoute user={user}>
-              <Home user={user} handleLogout={handleLogout} />
+              <RecipesLanding />
             </ProtectedRoute>
-          }
-        />
+          } />
+        <Route 
+          path='/home'
+          element={
+            <ProtectedRoute user={user}>
+              <Home user={user} />
+            </ProtectedRoute>
+          } />
+
       </Routes>
-    </>
+    </div>
   )
 }
 

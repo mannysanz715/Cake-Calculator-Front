@@ -1,14 +1,12 @@
 import LeftDashboard from "../../components/LeftDashboard/LeftDashboard"
 import { Routes, Route } from "react-router-dom"
 import './Home.css'
-const Home = ({user, handleLogout}) => {
+import RecipesLanding from "../RecipesIngredients/RecipesLanding"
+const Home = ({user, handleLogout, comp}) => {
+  console.log(comp)
   return (
     <div className="home-container">
-      <LeftDashboard className='left-dash' user={user} handleLogout={handleLogout} />
-      <Routes>
-        {/* <Route path='' element={} /> */}
-
-      </Routes>
+      <h1>Home</h1>
     </div>
 )
 }
