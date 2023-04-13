@@ -41,7 +41,7 @@ const App = () => {
       {user ? <LeftDashboard user={user} handleLogout={handleLogout}/>
       : <NavBar user={user} handleLogout={handleLogout} />
       }
-      <Routes>
+      <Routes className='Page-Content'>
         {user ? <Route path='/' element={
             <ProtectedRoute user={user}>
               <Home user={user} />
@@ -76,7 +76,7 @@ const App = () => {
           }
         />
         <Route 
-          path='/recipies'
+          path='/recipes'
           element={
             <ProtectedRoute user={user}>
               <RecipesLanding />

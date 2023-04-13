@@ -10,7 +10,7 @@ const LeftDashboard = ({user, handleLogout}) => {
           <li className='dash-items'><img className='dash-icon' src='/assets/navIcons/clipboard.png' alt=''/>Orders & Quotes</li>
           <li className='dash-items'><img className='dash-icon' alt='' src='/assets/navIcons/contacts.png'/>Contact</li>
           <li className='dash-items'><img className='dash-icon' alt='' src='/assets/navIcons/calendar.png'/>Calendars</li>
-          <li className='dash-items'><Link to='/recipies'><img className='dash-icon' alt='' src='/assets/navIcons/recipes.png'/>Recipies & Ingredients </Link>
+          <li className='dash-items'><Link to='/recipes'><img className='dash-icon' alt='' src='/assets/navIcons/recipes.png'/>Recipes & Ingredients </Link>
           </li>
           <li className='dash-items'><img className='dash-icon' alt='' src='/assets/navIcons/products.png'/>Products</li>
           <li className='dash-items'><img className='dash-icon' alt='' src='/assets/navIcons/reports.png'/>Reports & Lists</li>

@@ -2,9 +2,12 @@
   display:grid;
   grid-template-areas:  'leftDash nav'
                         'leftDash content';
-  grid-template-columns: 240px 1fr 1fr;
+  grid-template-columns: 240px 1fr;
 }
 
 .left-dash{
   grid-area: leftDash;
+}
+.page-content{
+  grid-area: content;
 }
