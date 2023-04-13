@@ -23,7 +23,7 @@
   margin-bottom:0px;
   color: white;
 }
-.dash-items:hover{
+.dash-items:hover, a:hover{
   color: white;
 }
 .inner-nav{
@@ -46,4 +46,9 @@
   flex-direction: column;
   margin:0;
   padding:0;
+}
+
+a{
+  color: rgb(211, 211, 211);
+  text-decoration: none;
 }
