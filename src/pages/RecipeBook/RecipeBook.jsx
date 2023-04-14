@@ -1,42 +1,20 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-
-let recipes = [
-  {
-    recipe : ' Carrot Batter',
-    category : 'Cake',
-    servings : 10,
-    customPrice : 6,
-    costPrice : 5.9,
-},
-  {
-    recipe : ' Carrot Batter',
-    category : 'Cake',
-    servings : 10,
-    customPrice : 6,
-    costPrice : 5.9,
-},
-  {
-    recipe : ' Carrot Batter',
-    category : 'Cake',
-    servings : 10,
-    customPrice : 6,
-    costPrice : 5.9,
-},
-  {
-    recipe : ' Carrot Batter',
-    category : 'Cake',
-    servings : 10,
-    customPrice : 6,
-    costPrice : 5.9,
-},
-]
+import * as recipeService from "../../services/recipesService.js"
 
 function RecipeBook({user, }) {
-  // const [recipes, setRecipes] = useState()
+  const [recipes, setRecipes] = useState()
+  
+  //Get Recipes for user
+  useEffect(() => {
+    async function getRecipes (){
+      const recipes = await recipeService.getAllRecipes()
+      setRecipes(recipes.reverse())
+    }
+    getRecipes()
+  },[])
 
   return (
-
     <div className="recipe-book-container">
       <h1>Recipe Book</h1>
       <button className="new-recipe-button">
@@ -54,7 +32,7 @@ function RecipeBook({user, }) {
           {recipes ?
             recipes.map(recipe =>
               <tr>
-                <td>{recipe.recipe}</td>
+                <td>{recipe.name}</td>
                 <td>{recipe.category}</td>
                 <td>{recipe.servings}</td>
                 <td>{recipe.customPrice}</td>
