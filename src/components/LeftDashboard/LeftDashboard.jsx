@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const LeftDashboard = ({user, handleLogout}) => {
   return (
     <div className='left-dashboard-container'>
-      <h3 className='title'>Cake Calculator : {user.name}</h3>
+      <h3 className='title'>Cakers Assistant</h3>
       <div className='left-nav'>
         <ul className='inner-nav top-nav'>
           <li className='dash-items'><Link to='/home'><img className='dash-icon' src='/assets/navIcons/home.png' alt='' />Dashboard</Link></li>

@@ -10,17 +10,19 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Home from './pages/Home/Home'
 import RecipesLanding from './pages/RecipesIngredients/RecipesLanding'
-import LeftDashboard from './components/LeftDashboard/LeftDashboard'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import LeftDashboard from './components/LeftDashboard/LeftDashboard'
 
 // styles
 import './App.css'
 import './components/LeftDashboard/LeftDashboard.css'
+import NewRecipe from './pages/NewRecipe/NewRecipe'
+import RecipeBook from './pages/RecipeBook/RecipeBook'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -38,8 +40,10 @@ const App = () => {
 
   return (
     <div className='home-container'>
-      {user ? <LeftDashboard user={user} handleLogout={handleLogout}/>
-      : <NavBar user={user} handleLogout={handleLogout} />
+      {user ? 
+        <LeftDashboard user={user} handleLogout={handleLogout}/>
+        : 
+        <NavBar user={user} handleLogout={handleLogout} />
       }
       <Routes className='Page-Content'>
         {user ? <Route path='/' element={
@@ -89,6 +93,22 @@ const App = () => {
               <Home user={user} />
             </ProtectedRoute>
           } />
+        <Route
+          path='/Recipes/AddRecipe'
+          element={
+            <ProtectedRoute user={user}>
+              <NewRecipe user={user}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/Recipes/Recipes'
+          element={
+            <ProtectedRoute user={user}>
+              <RecipeBook user={user}/>
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </div>
