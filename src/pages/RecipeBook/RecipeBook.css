@@ -1,0 +1,10 @@
+.recipe-book-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-list-table{
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
