@@ -24,9 +24,9 @@ function RecipeBook({user, }) {
   return (
     <div className="recipe-book-container">
       <h1>Recipe Book</h1>
-      <button className="new-recipe-button">
-        <Link to='/Recipes/AddRecipe'>Add Recipe</Link> 
-      </button>
+        <Link to='/Recipes/AddRecipe'>
+      <button className="new-recipe-button"> Add Recipe</button>
+          </Link> 
       <div className="recipe-list-container">
         <table className="recipe-list-table">
           <tr>
