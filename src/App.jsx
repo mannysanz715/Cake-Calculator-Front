@@ -23,6 +23,8 @@ import './App.css'
 import './components/LeftDashboard/LeftDashboard.css'
 import NewRecipe from './pages/NewRecipe/NewRecipe'
 import RecipeBook from './pages/RecipeBook/RecipeBook'
+import Ingredients from './pages/Ingredients/Ingredients'
+import NewIngredient from './pages/NewIngredient/NewIngredient'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -106,6 +108,22 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <RecipeBook user={user}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/Recipes/Ingredients'
+          element={
+            <ProtectedRoute user={user}>
+              <Ingredients user={user}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/Recipes/Ingredients/New'
+          element={
+            <ProtectedRoute user={user}>
+              <NewIngredient user={user}/>
             </ProtectedRoute>
           }
         />

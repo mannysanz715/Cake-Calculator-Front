@@ -84,6 +84,7 @@ const NewRecipeForm = ({handleChange}) => {
           autoComplete="off"
           onChange={handleChange}
         />
+        
       </form>
 )
 }

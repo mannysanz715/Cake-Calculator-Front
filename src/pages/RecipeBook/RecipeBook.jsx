@@ -28,28 +28,33 @@ function RecipeBook({user, }) {
       <button className="new-recipe-button"> Add Recipe</button>
           </Link> 
       <div className="recipe-list-container">
+      {recipes ?
+      <>
         <table className="recipe-list-table">
-          <tr>
-            <th>Recipe</th>
-            <th>Category</th>
-            <th>Servings</th>
-            <th>Custom Price</th>
-            <th>Cost Price</th>
-          </tr>
-          {recipes ?
-            recipes.map(recipe =>
-              <tr>
-                <td>{recipe.name}</td>
-                <td>{recipe.category}</td>
-                <td>{recipe.servings}</td>
-                <td>{recipe.customPrice}</td>
-                <td>{recipe.costPrice}</td>
-              </tr>
-              )
-            :  
-            <p>Add Recipes to your Recipe Book</p>
-          }
-        </table>
+          <tbody>
+            <tr>
+              <th>Recipe</th>
+              <th>Category</th>
+              <th>Servings</th>
+              <th>Custom Price</th>
+              <th>Cost Price</th>
+            </tr>
+              {recipes.map((recipe, idx) =>
+                <tr key={idx}>
+                  <td>{recipe.name}</td>
+                  <td>{recipe.category}</td>
+                  <td>{recipe.servings}</td>
+                  <td>{recipe.customPrice}</td>
+                  <td>{recipe.costPrice}</td>
+                </tr>
+                )
+              }
+              </tbody>
+            </table>
+        </>
+        :  
+        <p>Add Recipes to your Recipe Book</p>
+      }
       </div>
     </div>
 

@@ -10,10 +10,12 @@ const RecipesLanding = () => {
               <p>Use the recipe book to add & manage your favorite recipes.</p>    
             </li>
           </Link>
+          <Link to='/Recipes/Ingredients'>
           <li>
             <h4>Ingredients</h4>
             <p>Add or edit ingredients in your master list & use it to creat your recipes.</p>
           </li>
+          </Link>
           <li>
             <h4>Supply List</h4>
             <p>Add supplies such as boards, boxes & ribbons & add them in your orders.</p>
