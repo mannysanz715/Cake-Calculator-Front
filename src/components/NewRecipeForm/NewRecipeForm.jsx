@@ -1,7 +1,7 @@
 const NewRecipeForm = ({handleChange}) => {
   return (
       <form>
-        <label>Name</label>
+          <label>Name</label>
         <input
           name="name"
           type="text"
@@ -84,7 +84,7 @@ const NewRecipeForm = ({handleChange}) => {
           autoComplete="off"
           onChange={handleChange}
         />
-        
+        <button type="submit">Save</button>
       </form>
 )
 }
