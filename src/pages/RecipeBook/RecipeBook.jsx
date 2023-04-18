@@ -16,6 +16,15 @@ function RecipeBook({user, }) {
     getRecipes()
   },[])
 
+  function calculateCostPrice(recipe){
+    console.log(recipe.ingredients)
+    let ingredientsSum = 0
+    recipe.ingredients.forEach(ingredient => {
+      ingredientsSum += ingredient.costPrice
+    });
+    console.log(ingredientsSum)
+    return ingredientsSum
+  }
 
 
   // async function handleShowRecipe(){
@@ -46,7 +55,7 @@ function RecipeBook({user, }) {
                   <td>{recipe.category}</td>
                   <td>{recipe.servings}</td>
                   <td>{recipe.customPrice}</td>
-                  <td>{recipe.costPrice}</td>
+                  <td>{calculateCostPrice(recipe)}</td>
                 </tr>
                 )
               }

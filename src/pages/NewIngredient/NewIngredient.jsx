@@ -21,7 +21,6 @@ const NewIngredient = () => {
   async function handleSubmit(e) {
     e.preventDefault()
     await ingredientsService.addIngredient(formData)
-    navigate('/Recipes/Ingredients')
   }
 
   return (

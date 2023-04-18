@@ -1,8 +1,30 @@
-const NewIngredientForm = ({handleChange, handleSubmit}) => {
+import { useState } from "react"
+import * as ingredientsService from '../../services/ingredientsService.js'
+import './NewIngredientForm.css'
+const NewIngredientForm = ({modalState}) => {
+  const [formData, setFormData] = useState({ingredientName: '', supplier: '', purchaseSize: '', measurement: '', costPrice: ''})
+  
+  const handleChange = evt => {
+    if(evt.target.name === 'measurement'){
+      if(evt.target.value === 'undefined'){
+        setFormData({ ...formData, [evt.target.name]: undefined })
+      }
+      else setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    }
+    else setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  async function handleSubmit(e) {
+    // e.preventDefault()
+    await ingredientsService.addIngredient(formData)
+    modalState()
+  }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
+        
         <label>Ingredient Name</label>
         <input 
+          required
           name="ingredientName"
           type="text"
           autoComplete="off"
@@ -11,6 +33,7 @@ const NewIngredientForm = ({handleChange, handleSubmit}) => {
 
         <label>Purchase Size</label>
         <input
+          required
           name="purchaseSize"
           min='0'
           step='0.01'
@@ -19,7 +42,7 @@ const NewIngredientForm = ({handleChange, handleSubmit}) => {
           onChange={handleChange}
           />
           <label>Measurement</label>
-          <select name='measurement' onChange={handleChange}>
+          <select required name='measurement' onChange={handleChange}>
             <option value='undefined'>Select One</option>
             <option value='kg'>kg</option>
             <option value='g'>g</option>
@@ -40,6 +63,7 @@ const NewIngredientForm = ({handleChange, handleSubmit}) => {
           </select>
           <label>Cost Price</label>
           <input
+            required
             name="costPrice"
             min='0'
             step='0.01'
