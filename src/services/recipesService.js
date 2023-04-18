@@ -8,7 +8,18 @@ async function getAllRecipes() {
   })
   return await res.json()
 }
+async function createNewRecipe(formData, ingredients, allergens) {
+  formData.allergens = allergens
+  formData.ingredients = ingredients
+  const res = await fetch(BASE_URL + '/add', {
+    method: "POST",
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}`,
+    "Content-Type": "application/json", },
+    body: JSON.stringify(formData)
+  })
+  return  console.log(await res.json())
+}
 
 
 
-export { getAllRecipes }
+export { getAllRecipes, createNewRecipe }

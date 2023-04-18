@@ -1,6 +1,8 @@
-const NewRecipeForm = ({handleChange}) => {
+
+
+const NewRecipeForm = ({handleChange, handleSubmit, ingredients}) => {
   return (
-      <form>
+      <form onSubmit={handleSubmit}>
           <label>Name</label>
         <input
           name="name"
@@ -43,6 +45,7 @@ const NewRecipeForm = ({handleChange}) => {
           autoComplete="off"
           onChange={handleChange}
           />
+
         <div className="checklist">
           <h4>Allergens</h4>
           <input value='Dairy' name='allergens' onChange={handleChange} id='diary' type='checkbox'/>
@@ -78,6 +81,18 @@ const NewRecipeForm = ({handleChange}) => {
           <input value='Milk' name='allergens' onChange={handleChange} id='Milk' type='checkbox'/>
           <label>Milk</label>
         </div>
+
+        <div className="checklist">
+          <h4>Ingredients</h4>
+          { ingredients ? 
+          ingredients.map((ingredient, idx)=>
+          <div key={ingredient.ingredientName}>
+            <input value={ingredient._id}  name='ingredients' onChange={handleChange} type='checkbox'/>
+            <label>{ingredient.ingredientName}</label>
+          </div>
+          ) : ''}
+        </div>
+
         <textarea 
           name="storageInformation"
           type="text"

@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom'
 
 // page components
@@ -16,6 +16,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as ingredientsService from './services/ingredientsService.js'
+
 import LeftDashboard from './components/LeftDashboard/LeftDashboard'
 
 // styles
@@ -28,6 +30,8 @@ import NewIngredient from './pages/NewIngredient/NewIngredient'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [ingredients, setIngredients] = useState()
+
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -39,6 +43,16 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  useEffect(()=>{
+    async function getIngredients (){
+      const ingredients = await ingredientsService.getAllIngredients()
+      if(ingredients.length > 0){
+        setIngredients(ingredients.reverse())
+      }
+    }
+    getIngredients()
+  },[])
 
   return (
     <div className='home-container'>
@@ -99,7 +113,7 @@ const App = () => {
           path='/Recipes/AddRecipe'
           element={
             <ProtectedRoute user={user}>
-              <NewRecipe user={user}/>
+              <NewRecipe ingredients={ingredients} user={user}/>
             </ProtectedRoute>
           }
         />

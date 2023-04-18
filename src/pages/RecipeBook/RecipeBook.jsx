@@ -5,7 +5,6 @@ import * as recipeService from "../../services/recipesService.js"
 
 function RecipeBook({user, }) {
   const [recipes, setRecipes] = useState()
-  
   //Get Recipes for user
   useEffect(() => {
     async function getRecipes (){
@@ -16,6 +15,8 @@ function RecipeBook({user, }) {
     }
     getRecipes()
   },[])
+
+
 
   // async function handleShowRecipe(){
   // }
