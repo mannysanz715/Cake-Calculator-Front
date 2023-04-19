@@ -1,6 +1,14 @@
-
+import { useState } from "react"
 
 const NewRecipeForm = ({handleChange, handleSubmit, ingredients}) => {
+  const [modal, setModal] = useState(false)
+  const [value, setValue] = useState('')
+  function toggleModal() {
+    setModal(!modal)
+  }
+  function onChange(evt) {
+    setValue(evt.target.value)
+  }
   return (
       <form onSubmit={handleSubmit}>
           <label>Name</label>
@@ -84,13 +92,23 @@ const NewRecipeForm = ({handleChange, handleSubmit, ingredients}) => {
 
         <div className="checklist">
           <h4>Ingredients</h4>
-          { ingredients ? 
-          ingredients.map((ingredient, idx)=>
-          <div key={ingredient.ingredientName}>
-            <input value={ingredient._id}  name='ingredients' onChange={handleChange} type='checkbox'/>
-            <label>{ingredient.ingredientName}</label>
+          <button onClick={toggleModal} type="button">Add Ingredients</button>
+          { modal && 
+
+          <div className="modal overlay">
+            <div className="form-container"> 
+            <input type='text' value={value} onChange={onChange}/>
+              { ingredients ? 
+                ingredients.filter(ingredient =>{
+                  const searchTerm = value.toLowerCase()
+                  const ingName = ingredient.ingredientName.toLowerCase()
+                  return searchTerm && ingName.startsWith(searchTerm)
+                }).map((ingredient, idx)=>
+                  <div key={ingredient.ingredientName}> {ingredient.ingredientName} </div>
+              ) : ''}
+            </div>
           </div>
-          ) : ''}
+        }
         </div>
 
         <textarea 

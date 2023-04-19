@@ -25,7 +25,7 @@ const Ingredients = () => {
       <button onClick={toggleModal}>Add new Ingredient</button>
       
       {modal &&
-       <div className="modal">
+        <div className="modal">
         <div className="overlay modal-container">
         <button className="x-button" onClick={toggleModal}>X</button>
           <NewIngredientForm modalState={toggleModal}/>
