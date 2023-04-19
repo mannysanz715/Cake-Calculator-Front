@@ -1,14 +1,8 @@
 import { useState } from "react"
+import Ingredients from "./Ingredients"
 
-const NewRecipeForm = ({handleChange, handleSubmit, ingredients}) => {
-  const [modal, setModal] = useState(false)
-  const [value, setValue] = useState('')
-  function toggleModal() {
-    setModal(!modal)
-  }
-  function onChange(evt) {
-    setValue(evt.target.value)
-  }
+const NewRecipeForm = ({handleChange,ingredientsList, handleSubmit, handleAddIngredient, ingredients}) => {
+
   return (
       <form onSubmit={handleSubmit}>
           <label>Name</label>
@@ -90,27 +84,12 @@ const NewRecipeForm = ({handleChange, handleSubmit, ingredients}) => {
           <label>Milk</label>
         </div>
 
-        <div className="checklist">
-          <h4>Ingredients</h4>
-          <button onClick={toggleModal} type="button">Add Ingredients</button>
-          { modal && 
-
-          <div className="modal overlay">
-            <div className="form-container"> 
-            <input type='text' value={value} onChange={onChange}/>
-              { ingredients ? 
-                ingredients.filter(ingredient =>{
-                  const searchTerm = value.toLowerCase()
-                  const ingName = ingredient.ingredientName.toLowerCase()
-                  return searchTerm && ingName.startsWith(searchTerm)
-                }).map((ingredient, idx)=>
-                  <div key={ingredient.ingredientName}> {ingredient.ingredientName} </div>
-              ) : ''}
-            </div>
+        <Ingredients handleAddIngredient={handleAddIngredient} ingredients={ingredients}/>
+          {ingredientsList.map((ingredient, idx)=>
+          <div key={idx}>
+            <p>{ingredient[idx.name]}</p>
           </div>
-        }
-        </div>
-
+            )}
         <textarea 
           name="storageInformation"
           type="text"
