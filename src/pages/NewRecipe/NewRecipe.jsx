@@ -28,7 +28,6 @@ function NewRecipe ({ingredients}) {
   }
 
   function handleAddIngredient(ingredient){
-    console.log(ingredientsList)
     setIngredientsState([...ingredientsList,{ingredient}])  
   }
 

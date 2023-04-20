@@ -85,11 +85,11 @@ const NewRecipeForm = ({handleChange,ingredientsList, handleSubmit, handleAddIng
         </div>
 
         <Ingredients handleAddIngredient={handleAddIngredient} ingredients={ingredients}/>
+        <ul>
           {ingredientsList.map((ingredient, idx)=>
-          <div key={idx}>
-            <p>{ingredient[idx.name]}</p>
-          </div>
-            )}
+            <li key={idx}>{ingredient.ingredient.name}: {ingredient.ingredient.amount} {ingredient.ingredient.measurement}</li>
+          )}
+        </ul >
         <textarea 
           name="storageInformation"
           type="text"
