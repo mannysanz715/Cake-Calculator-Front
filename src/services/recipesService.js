@@ -10,7 +10,13 @@ async function getAllRecipes() {
 }
 async function createNewRecipe(formData, ingredients, allergens) {
   formData.allergens = allergens
-  formData.ingredients = ingredients
+  const ingList = []
+  console.log(ingredients)
+  ingredients.forEach(ingredient =>{
+      ingList.push(ingredient.ingredient)
+  })
+  console.log(ingList)
+  formData.ingredients = ingList
   const res = await fetch(BASE_URL + '/add', {
     method: "POST",
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}`,

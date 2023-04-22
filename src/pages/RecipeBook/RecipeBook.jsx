@@ -17,12 +17,10 @@ function RecipeBook({user, }) {
   },[])
 
   function calculateCostPrice(recipe){
-    console.log(recipe.ingredients)
     let ingredientsSum = 0
     recipe.ingredients.forEach(ingredient => {
       ingredientsSum += ingredient.costPrice
     });
-    console.log(ingredientsSum)
     return ingredientsSum
   }
 
