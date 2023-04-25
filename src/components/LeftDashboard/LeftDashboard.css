@@ -6,6 +6,8 @@
   height: 100vh;
   margin:0;
   padding:0;
+  position: sticky;
+  top: 0;
 }
 .dash-icon{
   width:20px;

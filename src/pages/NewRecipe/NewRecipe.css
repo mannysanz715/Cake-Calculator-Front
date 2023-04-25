@@ -1,0 +1,12 @@
+.new-recipe-container{
+  /* background-color: rgb(241, 239, 239); */
+  overflow-x: hidden;
+}
+
+.new-recipe-page-title{
+  width: 100%;
+  background-color: #324a62;
+  color: white;
+  margin: 0;
+  padding: 18px;
+}

@@ -3,11 +3,18 @@
   grid-template-areas:  'leftDash nav'
                         'leftDash content';
   grid-template-columns: 240px 1fr;
+  height: fit-content;
 }
 
 .left-dash{
   grid-area: leftDash;
 }
+
+.nav-bar{
+  position: fixed;
+  bottom: 0;
+}
+
 .page-content{
   grid-area: content;
 }

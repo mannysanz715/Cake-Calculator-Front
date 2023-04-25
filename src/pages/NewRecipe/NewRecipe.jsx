@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import NewRecipeForm from "../../components/NewRecipeForm/NewRecipeForm"
 import * as recipesService from '../../services/recipesService.js'
-
+import './NewRecipe.css'
 
 function NewRecipe ({ingredients}) {
   const navigate = useNavigate()
@@ -32,8 +32,8 @@ function NewRecipe ({ingredients}) {
   }
 
   return (
-    <div>
-      <h1>New Recipe</h1>
+    <div className="new-recipe-container">
+      <h1 className="new-recipe-page-title">New Recipe</h1>
       <NewRecipeForm ingredientsList={ingredientsList} handleSubmit={handleSubmit} handleAddIngredient={handleAddIngredient} ingredients={ingredients} handleChange={handleChange}/>
     </div>
 )

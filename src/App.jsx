@@ -57,7 +57,7 @@ const App = () => {
   return (
     <div className='home-container'>
       {user ? 
-        <LeftDashboard user={user} handleLogout={handleLogout}/>
+        <LeftDashboard className='nav-bar' user={user} handleLogout={handleLogout}/>
         : 
         <NavBar user={user} handleLogout={handleLogout} />
       }

@@ -32,7 +32,7 @@ const Ingredients = ({ingredients, handleAddIngredient}) => {
   }
   return (
     <div className="checklist">
-          <h4>Ingredients</h4>
+          <h2>Ingredients</h2>
           <button onClick={toggleModal} type="button">Add Ingredients</button>
           { modal && 
 

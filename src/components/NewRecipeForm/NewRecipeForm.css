@@ -1,0 +1,74 @@
+.recipe-form{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  gap: 30px;
+}
+
+.recipe-form-display{
+  display: flex;
+}
+
+.recipe-info{
+  display: flex;
+  flex-direction:column;
+  gap: 10px;
+  min-width: 40%;
+  max-width: 50%;
+  background-color: white;
+  padding: 20px 30px 30px 30px ;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.info-input{
+  border-radius: 10px;
+  border: .5px solid lightgray;
+  padding:5px;
+}
+
+.info-input:focus{
+  outline: none;
+  border: .5px solid rgb(133, 132, 132);
+  
+}
+
+.ingredients-section{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 30px;
+  width: 50%;
+  justify-content: start;
+  align-items: start;
+}
+
+.allergens-list{
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 25px;
+  margin: 10px;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.ingredients-list{
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin: 10px;
+  padding: 25px;
+  min-width: 80%;
+  max-width: 88%;
+  border-radius: 5px;
+}
+
+
+
+textarea{
+  resize: none;
+}
